@@ -48,6 +48,8 @@ randSnake();
 refreshSnake();
 var direction = {x:0,y:1};
 function snakeMove(){
+	var foodNode = document.querySelector('#x'+food.x+`y`+food.y);
+	foodNode.className = "square food";
 	var hx = snake[0].x+direction.x;
 	if(hx >= 26) hx = 0;
 	if(hx < 0) hx = 25;
@@ -107,6 +109,7 @@ body.onkeydown = function(event){
 	}else if(event.key == "ArrowRight" && direction.y != -1){
 		direction = {x:0,y:1};
 	}
+	snakeMove();
 }
 var restart = document.querySelector(`.restart`);
 restart.onclick = function(){
